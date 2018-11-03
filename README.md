@@ -4,6 +4,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ```
 ng new finances-frontend --skip-tests --routing
 ```
+# Dependencies:
+
+###[Ng-Bootstrap](https://ng-bootstrap.github.io/#/getting-started):
+
+```
+npm install @ng-bootstrap/ng-bootstrap bootstrap jquery popper.js --save
+```
+
+add to style.scss:
+```
+@import '~bootstrap/scss/bootstrap';
+```
 
 ## Development server
 
