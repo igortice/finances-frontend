@@ -6,7 +6,7 @@ ng new finances-frontend --skip-tests --routing
 ```
 # Dependencies:
 
-###[Ng-Bootstrap](https://ng-bootstrap.github.io/#/getting-started):
+###[NG-BOOTSTRAP](https://ng-bootstrap.github.io/#/getting-started):
 
 ```
 npm install @ng-bootstrap/ng-bootstrap bootstrap jquery popper.js --save
@@ -15,6 +15,12 @@ npm install @ng-bootstrap/ng-bootstrap bootstrap jquery popper.js --save
 add to style.scss:
 ```
 @import '~bootstrap/scss/bootstrap';
+```
+
+###[PRIMENG](https://www.primefaces.org/primeng/#/setup):
+
+```
+npm install primeng primeicons --save
 ```
 
 ## Development server
