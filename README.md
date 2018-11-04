@@ -23,6 +23,21 @@ add to style.scss:
 npm install primeng primeicons --save
 ```
 
+###[ANIMATE.CSS](https://github.com/daneden/animate.css):
+
+```
+npm install animate.css --save
+```
+
+add to angular.json:
+```
+"styles": [
+            "./node_modules/animate.css/animate.min.css",
+            ...,
+            "src/styles.scss"
+          ],
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

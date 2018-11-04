@@ -46,13 +46,16 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/animate.css/animate.min.css",
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "src/_custom.scss",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.slim.min.js"
+            ]
           },
           "configurations": {
             "production": {
