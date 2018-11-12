@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -20,6 +20,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase),
