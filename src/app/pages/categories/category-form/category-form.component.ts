@@ -1,5 +1,5 @@
 import { AfterContentChecked, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Category } from '../shared/category.model';
@@ -17,14 +17,14 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   categoryForm: FormGroup;
   pageTitle: string;
   serverErrorMessages: string[] = null;
-  submitForm                    = false;
+  submittingForm                = false;
   category: Category            = new Category();
 
   constructor(
     private categoryService: CategoryService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit() {
@@ -35,6 +35,16 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.setPageTitle();
+  }
+
+  submitForm() {
+    this.submittingForm = true;
+
+    if (this.currentAction === 'new') {
+      this.createCategory();
+    } else {
+      this.updateCategory();
+    }
   }
 
   // PRIVATE METHODS
@@ -75,5 +85,26 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     } else {
       this.pageTitle = `Editando categoria ${this.category.name || '' }`;
     }
+  }
+
+  private createCategory() {
+    const category: Category = Object.assign(new Category(), this.categoryForm.value);
+
+    this.categoryService.create(category).subscribe(
+      category => this.actionsForSuccess(category),
+      error => this.actionsForError(error)
+    );
+  }
+
+  private updateCategory() {
+
+  }
+
+  private submittingForm(category: Category) {
+
+  }
+
+  private actionsForError(error) {
+
   }
 }
