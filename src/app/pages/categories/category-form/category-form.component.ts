@@ -37,7 +37,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     this.setPageTitle();
   }
 
-  // PRIVATE
+  // PRIVATE METHODS
 
   private setCurrentAction() {
     if (this.route.snapshot.url[ 0 ].path === 'new') {
@@ -64,7 +64,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
           this.category = category;
           this.categoryForm.patchValue(category);
         },
-        (error) => alert('error')
+        () => alert('error')
       );
     }
   }
