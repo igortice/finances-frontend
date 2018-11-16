@@ -6,6 +6,7 @@ import { Category } from '../shared/category.model';
 import { CategoryService } from '../shared/category.service';
 
 import { switchMap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector:    'app-category-form',
@@ -25,6 +26,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -74,7 +76,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
           this.category = category;
           this.categoryForm.patchValue(category);
         },
-        () => alert('error')
+        () => this.toastr.error('Problemas de comunicação com servidor', 'Error')
       );
     }
   }
@@ -100,11 +102,23 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
 
   }
 
-  private submittingForm(category: Category) {
+  private actionsForSuccess(category: Category) {
+    this.toastr.success('Item criado com êxito', 'Sucesso');
 
+    this.router.navigateByUrl('categories', { skipLocationChange: true }).then(
+      () => this.router.navigate([ 'categories', category.id, 'edit' ])
+    );
   }
 
   private actionsForError(error) {
+    this.toastr.info('Problemas de comunicação com servidor', 'Error');
 
+    this.submittingForm = false;
+
+    if (error.status === 422) {
+      // this.serverErrorMessages = JSON.parse(error._body).errors;
+    } else {
+      this.serverErrorMessages = [ 'Falha na comunicação com o servidor.' ];
+    }
   }
 }
