@@ -1,11 +1,11 @@
 import { AfterContentChecked, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators }     from '@angular/forms';
-import { ActivatedRoute, Router }                 from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Category }        from '../shared/category.model';
+import { Category } from '../shared/category.model';
 import { CategoryService } from '../shared/category.service';
 
-import { switchMap }     from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
