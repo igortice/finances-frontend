@@ -31,12 +31,11 @@
         <div class='form-group col-md-2'>
           <label for='type'>Tipo</label>
           <select name='type' id='type' class='form-control' formControlName='type'>
-            <option value='expense'>Despesa</option>
-            <option value='revenue'>Receita</option>
+            <option *ngFor='let option of typeOptions' value='option.value'>{{ option.text }}</option>
           </select>
           <!--<input type='text' class='form-control' id='type' formControlName='name'>-->
-          <div class='text-danger' *ngIf='entryForm.get("name").invalid && entryForm.get("name").touched'>
-            <div *ngIf='entryForm.get("name").errors.required'>dado obrigatório</div>
+          <div class='text-danger' *ngIf='entryForm.get("type").invalid && entryForm.get("type").touched'>
+            <div *ngIf='entryForm.get("type").errors.required'>dado obrigatório</div>
           </div>
         </div>
 
@@ -50,8 +49,8 @@
           </div>
         </div>
 
-        <!-- name -->
-        <div class='form-group col-md-5'>
+        <!-- amount -->
+        <div class='form-group col-md-3'>
           <label for='amount'>Valor</label>
           <div class='input-group'>
             <div class='input-group-prepend'>
@@ -59,18 +58,59 @@
             </div>
             <input type='text' [imask]='imaskConfigAmount' class='form-control' id='amount' formControlName='amount'>
           </div>
-          <div class='text-danger' *ngIf='entryForm.get("name").invalid && entryForm.get("name").touched'>
-            <div *ngIf='entryForm.get("name").errors.required'>dado obrigatório</div>
-            <div *ngIf='entryForm.get("name").errors.minlength'>deve conter pelo menos 2 caracteres</div>
+          <div class='text-danger' *ngIf='entryForm.get("amount").invalid && entryForm.get("amount").touched'>
+            <div *ngIf='entryForm.get("amount").errors.required'>dado obrigatório</div>
+          </div>
+        </div>
+
+        <!-- date -->
+        <div class='form-group col-md-2'>
+          <label for='date'>Date</label>
+
+          <p-calendar id='date'
+                      formControlName='date'
+                      inputStyleClass='form-control'
+                      dataType='string'
+                      dateFormat='dd/mm/yy' [locale]='ptBR' [showButtonBar]='true'></p-calendar>
+
+          <div class='text-danger' *ngIf='entryForm.get("date").invalid && entryForm.get("date").touched'>
+            <div *ngIf='entryForm.get("date").errors.required'>dado obrigatório</div>
           </div>
         </div>
 
       </div>
 
       <div class='form-row'>
+        <!-- paid -->
+        <div class='form-group col-md-2'>
+          <label for='paid'>Pago</label>
+          <div class='btn-group'>
+            <label (click)='entryForm.get("paid").setValue(true)' [class.active]='entryForm.get("paid").value == true'
+                   class='btn btn-outline-info'>Pago</label>
+            <label (click)='entryForm.get("paid").setValue(false)' [class.active]='entryForm.get("paid").value == false'
+                   class='btn btn-outline-info'>Pedente</label>
+          </div>
+
+
+          <div class='text-danger' *ngIf='entryForm.get("paid").invalid && entryForm.get("paid").touched'>
+            <div *ngIf='entryForm.get("paid").errors.required'>dado obrigatório</div>
+          </div>
+        </div>
+
+        <!-- categoryId -->
+        <div class='form-group col-md-3'>
+          <label for='categoryId'>Categoria</label>
+          <select name='categoryId' id='categoryId' class='form-control' formControlName='categoryId'>
+            <option *ngFor='let cat of categories' value='cat.id'>{{ cat.name }}</option>
+          </select>
+          <!--<input type='text' class='form-control' id='type' formControlName='name'>-->
+          <div class='text-danger' *ngIf='entryForm.get("categoryId").invalid && entryForm.get("categoryId").touched'>
+            <div *ngIf='entryForm.get("categoryId").errors.required'>dado obrigatório</div>
+          </div>
+        </div>
 
         <!-- description -->
-        <div class='form-group col-md-8'>
+        <div class='form-group col-md-7'>
           <label for='description'>Descrição</label>
           <input type='text' class='form-control' id='description' formControlName='description'>
         </div>
@@ -83,4 +123,6 @@
       </button>
     </div>
   </div>
+
+  <pre>{{ entryForm.value | json }}</pre>
 </form>

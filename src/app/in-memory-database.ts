@@ -41,7 +41,7 @@ export class InMemoryDatabase implements InMemoryDbService {
         name:        'Croco Beach',
         categoryId:  categories[ 2 ].id,
         category:    categories[ 2 ],
-        paid:        true,
+        paid:        false,
         date:        '16/10/2018',
         amount:      '110,00',
         type:        'expense',
