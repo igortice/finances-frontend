@@ -34,8 +34,8 @@
       </td>
       <td>{{ entry.category.name }}</td>
       <td class='text-right'>
-        <!--<strong [class.text-success]='entry.type == "renevue"' [class.text-danger]='entry.type == "expense"'>{{ entry.amount }}</strong>-->
-        <strong [ngClass]="{'renevue': 'text-success',  'expense': 'text-danger'}[entry.type]">
+        <!--<strong [class.text-success]='entry.type == "revenue"' [class.text-danger]='entry.type == "expense"'>{{ entry.amount }}</strong>-->
+        <strong [ngClass]="{'revenue': 'text-success',  'expense': 'text-danger'}[entry.type]">
           {{ entry.amount }}
         </strong>
         <br>
@@ -43,7 +43,7 @@
       </td>
       <td class='text-center'>
         <a class='btn btn-outline-info btn-sm mr-1' [routerLink]='[entry.id, "edit"]'>editar</a>
-        <button (click)='deleteEntry(category)' class='btn btn-outline-danger btn-sm'>excluir</button>
+        <button (click)='deleteEntry(entry)' class='btn btn-outline-danger btn-sm'>excluir</button>
       </td>
     </tr>
   </tbody>

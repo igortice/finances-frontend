@@ -55,7 +55,7 @@ export class InMemoryDatabase implements InMemoryDbService {
         paid:        true,
         date:        '05/10/2018',
         amount:      '7700,00',
-        type:        'renevue',
+        type:        'revenue',
         description: 'recebimento proventos'
       } as Entry
     ];
