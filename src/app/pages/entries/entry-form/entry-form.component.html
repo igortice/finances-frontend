@@ -101,7 +101,7 @@
         <div class='form-group col-md-3'>
           <label for='categoryId'>Categoria</label>
           <select name='categoryId' id='categoryId' class='form-control' formControlName='categoryId'>
-            <option *ngFor='let cat of categories' value='cat.id'>{{ cat.name }}</option>
+            <option *ngFor='let cat of categories' [value]='cat.id'>{{ cat.name }}</option>
           </select>
           <!--<input type='text' class='form-control' id='type' formControlName='name'>-->
           <div class='text-danger' *ngIf='entryForm.get("categoryId").invalid && entryForm.get("categoryId").touched'>
